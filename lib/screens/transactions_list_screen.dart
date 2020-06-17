@@ -11,7 +11,7 @@ class TransactionsListScreen extends StatelessWidget {
         title: Consumer<Transactions>(
           builder: (ctx, store, child) => Text(
               '${store.transactions.length} транзакций'),
-        ), // тут должно вычисляться
+        ),
         centerTitle: true,
       ),
       body: FutureBuilder(
