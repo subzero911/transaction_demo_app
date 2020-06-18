@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:transactions_test_task/services/dio_client.dart' as dio;
+import 'package:transactions_test_task/services/rest_service.dart' as api;
 import 'package:transactions_test_task/models/transaction.dart';
 
 class Transactions with ChangeNotifier {
@@ -9,11 +9,11 @@ class Transactions with ChangeNotifier {
   List<Transaction> get transactions => List.of(_transactions);
 
   Transaction findById(String id) {
-    return _transactions.firstWhere((tr) => tr.id == id);
+    return _transactions.firstWhere((tx) => tx.id == id);
   }
 
   Future<void> fetchTransactions() async {
-    final Response response = await dio.getData();
+    final Response response = await api.getData();
     final data = response.data;
     if (data == null) {
       print('null response');
